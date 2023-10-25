@@ -16,7 +16,7 @@ const Layout = () => {
       </div>
       {/* overlay */}
       <div
-        className={`bg-gray-950 h-screen bg-opacity-50 z-20 top-0 left-0 right-0 bottom-0 fixed w-full ${
+        className={`bg-gray-950 h-screen bg-opacity-60 z-20 top-0 left-0 right-0 bottom-0 fixed w-full ${
           menuState || lightBoxState ? "block" : "hidden"
         }`}
       ></div>
