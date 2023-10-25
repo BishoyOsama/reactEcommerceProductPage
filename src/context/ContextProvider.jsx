@@ -3,6 +3,7 @@ import { useContext, createContext, useState, useRef, useEffect } from "react";
 const StateContext = createContext();
 export const ContextProvider = ({ children }) => {
   const [menuState, setMenuState] = useState(false);
+  const [lightBoxState, setLightBoxState] = useState(false);
   const menuRef = useRef(null);
 
   useEffect(() => {
@@ -21,6 +22,8 @@ export const ContextProvider = ({ children }) => {
         menuState,
         setMenuState,
         menuRef,
+        lightBoxState,
+        setLightBoxState,
       }}
     >
       {children}
