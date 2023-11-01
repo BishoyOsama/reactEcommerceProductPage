@@ -2,25 +2,31 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import OverlayLightBox from "./OverlayLightBox";
 import { useStateContext } from "../context/ContextProvider";
+import { Cart } from "./exports";
 const Layout = () => {
-  const { menuState, lightBoxState } = useStateContext();
+  const { menuState, lightBoxState, screenSize, cartState } = useStateContext();
   return (
     <>
-      <div className="xl:max-w-[1400px] w-full mx-auto flex flex-col justify-between items-center">
+      <div
+        className={`xl:max-w-[1400px] w-full mx-auto flex flex-col justify-between items-center h-screen md:h-auto ${
+          menuState ? "overflow-y-hidden" : ""
+        }`}
+      >
         <div className="w-full">
           <Navbar />
         </div>
-        <div className="">
+        <div className="h-full">
           <Outlet />
         </div>
       </div>
       {/* overlay */}
       <div
         className={`bg-gray-950 h-screen bg-opacity-60 z-20 top-0 left-0 right-0 bottom-0 fixed w-full ${
-          menuState || lightBoxState ? "block" : "hidden"
+          menuState || (lightBoxState && screenSize > 640) ? "block" : "hidden"
         }`}
       ></div>
-      <OverlayLightBox/>
+      <OverlayLightBox />
+      {cartState && <Cart />}
     </>
   );
 };

@@ -1,5 +1,7 @@
 export { default as Home } from "./Home";
 export { default as Layout } from "./Layout";
+export { default as SlideControlButtons } from "./SlideControlButtons";
+export { default as Cart } from "./Cart";
 export { default as imageProduct1 } from "../assets/imageproduct1.jpg";
 export { default as imageProduct2 } from "../assets/imageproduct2.jpg";
 export { default as imageProduct3 } from "../assets/imageproduct3.jpg";
