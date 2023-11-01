@@ -56,7 +56,7 @@ const Navbar = () => {
             {/* small devices navigation menu  */}
             <nav
               className={`fixed top-0 left-0 z-30 bg-white w-[70vw] h-screen font-kumbh duration-300 ${
-                menuState ? ("translate-x-0") : ("-translate-x-[20rem]")
+                menuState ? ("translate-x-0") : ("-translate-x-[100%]")
               }`}
             >
               <div className="flex flex-col p-3 gap-y-10 relative top-4">
