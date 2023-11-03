@@ -8,14 +8,14 @@ const Layout = () => {
   return (
     <>
       <div
-        className={`xl:max-w-[1400px] w-full mx-auto flex flex-col justify-between items-center h-screen md:h-auto ${
+        className={`xl:max-w-[1400px] w-full mx-auto flex flex-col justify-between items-center h-screen${
           menuState ? "overflow-y-hidden" : ""
         }`}
       >
-        <div className="w-full">
+        <div className="w-full h-auto">
           <Navbar />
         </div>
-        <div className="h-full">
+        <div className="h-full w-full">
           <Outlet />
         </div>
       </div>

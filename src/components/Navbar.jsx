@@ -23,12 +23,12 @@ const Navbar = () => {
           {/* tablets and larger devices navigation */}
           <ul className="md:flex gap-x-7 items-center h-full hidden">
             <li className={liStyling}>
-              <NavLink exact="true" to="/" className={navLinkMdStyling}>
+              <NavLink exact="true" to="collections" className={navLinkMdStyling}>
                 Collections
               </NavLink>
             </li>
             <li className={liStyling}>
-              <NavLink exact="true" to="/" className={navLinkMdStyling}>
+              <NavLink exact="true" to="men" className={navLinkMdStyling}>
                 Men
               </NavLink>
             </li>
@@ -51,7 +51,7 @@ const Navbar = () => {
           {/* mobile devices navigation button */}
           <div className="flex md:hidden" ref={menuRef}>
             <button className="w-4" onClick={() => setMenuState(true)}>
-              <img src={menu} alt="menu button" className="w-full" />
+              <img src={menu} alt="menu button" className="sw-full" />
             </button>
             {/* small devices navigation menu  */}
             <nav
@@ -68,12 +68,12 @@ const Navbar = () => {
                 </button>
                 <ul className="flex flex-col gap-y-4 items-start h-full pl-1">
                   <li className={liStyling}>
-                    <NavLink exact="true" to="/" className={navLinkSmStyling}>
+                    <NavLink exact="true" to="collections" className={navLinkSmStyling}>
                       Collections
                     </NavLink>
                   </li>
                   <li className={liStyling}>
-                    <NavLink exact="true" to="/" className={navLinkSmStyling}>
+                    <NavLink exact="true" to="men" className={navLinkSmStyling}>
                       Men
                     </NavLink>
                   </li>

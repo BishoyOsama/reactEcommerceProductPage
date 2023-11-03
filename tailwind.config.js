@@ -22,6 +22,9 @@ export default {
       },
       animation: {
         cartOpacity: "cartOpacity 400ms ease-in-out"
+      },
+      backgroundImage: {
+        'collection-background': "url('/src/assets/shoes collection.jpg')"
       }
     },
   },
