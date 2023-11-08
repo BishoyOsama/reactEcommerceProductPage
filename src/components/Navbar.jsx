@@ -6,12 +6,22 @@ import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
 import { useStateContext } from "../context/ContextProvider";
 const Navbar = () => {
-  const { menuState, setMenuState, menuRef, buttonRef, cartItems, setCartState } =
-    useStateContext();
+  const {
+    menuState,
+    setMenuState,
+    menuRef,
+    buttonRef,
+    cartItems,
+    setCartState,
+  } = useStateContext();
+  const links = ["collections", "men", "women", "about", "contact"];
 
   const navLinkMdStyling =
-    "hover:border-b-[5px] text-DarkGrayishBlue hover:text-VeryDarkBlue border-primeOrange h-full flex items-center";
-  const navLinkSmStyling = "font-bold hover:text-primeOrange";
+    "hover:border-b-[5px] text-DarkGrayishBlue hover:text-VeryDarkBlue border-primeOrange h-full flex items-center capitalize";
+  const activeNavLinkMdStyling =
+    "border-b-[5px] text-DarkGrayishBlue hover:text-VeryDarkBlue border-primeOrange h-full flex items-center capitalize font-bold";
+  const activeNavLinkSmStyling = "font-bold text-primeOrange capitalize";
+  const navLinkSmStyling = "font-bold hover:text-primeOrange capitalize";
   const liStyling = "list-none h-full flex items-center";
   return (
     <>
@@ -22,31 +32,19 @@ const Navbar = () => {
           </div>
           {/* tablets and larger devices navigation */}
           <ul className="md:flex gap-x-7 items-center h-full hidden">
-            <li className={liStyling}>
-              <NavLink exact="true" to="collections" className={navLinkMdStyling}>
-                Collections
-              </NavLink>
-            </li>
-            <li className={liStyling}>
-              <NavLink exact="true" to="men" className={navLinkMdStyling}>
-                Men
-              </NavLink>
-            </li>
-            <li className={liStyling}>
-              <NavLink exact="true" to="/" className={navLinkMdStyling}>
-                Women
-              </NavLink>
-            </li>
-            <li className={liStyling}>
-              <NavLink exact="true" to="/" className={navLinkMdStyling}>
-                About
-              </NavLink>
-            </li>
-            <li className={liStyling}>
-              <NavLink exact="true" to="/" className={navLinkMdStyling}>
-                Contact
-              </NavLink>
-            </li>
+            {links.map((link, index) => (
+              <li className={liStyling} key={index}>
+                <NavLink
+                  exact="true"
+                  to={link}
+                  className={({ isActive }) =>
+                    isActive ? activeNavLinkMdStyling : navLinkMdStyling
+                  }
+                >
+                  {link}
+                </NavLink>
+              </li>
+            ))}
           </ul>
           {/* mobile devices navigation button */}
           <div className="flex md:hidden" ref={menuRef}>
@@ -56,7 +54,7 @@ const Navbar = () => {
             {/* small devices navigation menu  */}
             <nav
               className={`fixed top-0 left-0 z-30 bg-white w-[70vw] h-screen font-kumbh duration-300 ${
-                menuState ? ("translate-x-0") : ("-translate-x-[100%]")
+                menuState ? "translate-x-0" : "-translate-x-[100%]"
               }`}
             >
               <div className="flex flex-col p-3 gap-y-10 relative top-4">
@@ -67,31 +65,20 @@ const Navbar = () => {
                   <img src={close} alt="close menu" className="w-full" />
                 </button>
                 <ul className="flex flex-col gap-y-4 items-start h-full pl-1">
-                  <li className={liStyling}>
-                    <NavLink exact="true" to="collections" className={navLinkSmStyling}>
-                      Collections
-                    </NavLink>
-                  </li>
-                  <li className={liStyling}>
-                    <NavLink exact="true" to="men" className={navLinkSmStyling}>
-                      Men
-                    </NavLink>
-                  </li>
-                  <li className={liStyling}>
-                    <NavLink exact="true" to="/" className={navLinkSmStyling}>
-                      Women
-                    </NavLink>
-                  </li>
-                  <li className={liStyling}>
-                    <NavLink exact="true" to="/" className={navLinkSmStyling}>
-                      About
-                    </NavLink>
-                  </li>
-                  <li className={liStyling}>
-                    <NavLink exact="true" to="/" className={navLinkSmStyling}>
-                      Contact
-                    </NavLink>
-                  </li>
+                  {links.map((link, index) => (
+                    <li className={liStyling} key={index}>
+                      <NavLink
+                        exact="true"
+                        to={link}
+                        className={({ isActive }) =>
+                          isActive ? activeNavLinkSmStyling : navLinkSmStyling
+                        }
+                        onClick={() => setMenuState(false)}
+                      >
+                        {link}
+                      </NavLink>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </nav>
@@ -99,7 +86,11 @@ const Navbar = () => {
         </div>
 
         <div className="flex gap-x-5 h-full items-center">
-          <button className="w-fit relative cursor-pointer" onClick={() => setCartState(prevState => !prevState)} ref={buttonRef}>
+          <button
+            className="w-fit relative cursor-pointer"
+            onClick={() => setCartState((prevState) => !prevState)}
+            ref={buttonRef}
+          >
             <img src={cart} alt="cart" className="w-7" />
             {cartItems.length !== 0 ? (
               <p className="absolute -top-1 left-4 bg-primeOrange w-fit px-2 py-[0.5px] rounded-full text-[0.6rem] text-white font-bold">
