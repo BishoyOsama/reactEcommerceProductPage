@@ -4,6 +4,7 @@ export { default as SlideControlButtons } from "./SlideControlButtons";
 export { default as Cart } from "./Cart";
 export { default as Card } from "./Card";
 export { default as CardButton } from "./CardButton";
+export { default as Footer } from "./Footer";
 export { default as Collections } from "../pages/Collections";
 export { default as Men } from "../pages/Men";
 export { default as imageProduct1 } from "../assets/imageproduct1.jpg";

@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import OverlayLightBox from "./OverlayLightBox";
 import { useStateContext } from "../context/ContextProvider";
-import { Cart } from "./exports";
+import { Cart, Footer } from "./exports";
 const Layout = () => {
   const { menuState, lightBoxState, screenSize, cartState } = useStateContext();
   return (
@@ -17,6 +17,7 @@ const Layout = () => {
         </div>
         <div className="h-full w-full">
           <Outlet />
+          <Footer />
         </div>
       </div>
       {/* overlay */}
